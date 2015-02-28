@@ -230,7 +230,12 @@ include_once("../nodebite-swiss-army-oop.php");
 		$ds->tools[] = New Tool($tool_data["description"], $tool_data["skills"]);
 	}
 	
-	//$allData=array_merge($ds->players,$ds->challenges,$ds->tools);
-	//echo json_encode($allData);
+//echo(json_encode($ds->players[0]));
 	
-	echo(json_encode($ds->players[0]));
+$echo_arr = array(
+  "players" => $ds->players,
+  "tools" => $ds->tools,
+  "challenges" => $ds->challenges,
+);
+
+echo(json_encode($echo_arr));

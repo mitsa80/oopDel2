@@ -20,8 +20,8 @@ height:100px;
 	padding:5%;
 }	
 
-#headerMessage{
-
+.headerMessage{
+display:none;
 }
 
 main{
@@ -38,8 +38,9 @@ input, select, button {
 	margin: 5px;
 }
 
-.messageBox {
+.messageBox1{
 	margin: 10px;
+	display:none;
 }
 
 h1 {

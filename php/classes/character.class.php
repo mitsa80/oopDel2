@@ -1,6 +1,6 @@
 <?php
-class Character extends Base {
 
+class Character extends Base {
 	public $name;
 	public $tools=array();
 	public $success=50;
@@ -8,4 +8,6 @@ class Character extends Base {
 	public function __construct ($name){
 		$this->name=$name;	
 	}
+	
+	
 }

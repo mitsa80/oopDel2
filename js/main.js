@@ -1,6 +1,7 @@
 $(function(){
 
 	$(".reset").click(function(){
+		$(".headerMessage").css({display: "block"});
 		$("#player").val("");
 		$("select#selectClass option:first").attr('selected','selected');
 		
@@ -30,7 +31,12 @@ $(function(){
 				player_class:cahracter
 			},
 			success:function(data){
-				console.log(data)
+				$(".messageBox1").css({display: "block"});
+				$('.messageBox1').append("<p>These are facts about you: <p><br>");
+				var spObj=data.players[0];
+				$.each( spObj, function( key, value ) {
+					$(".messageBox1").append("<p>",key + " : " +value+"</p><br>");
+				});
 			}
 		
 		});
