@@ -1,0 +1,47 @@
+.wrapper{
+border: groove 20px yellow;
+width:50%;
+margin:20px auto;
+}
+
+header,footer{
+background: pink;
+height:100px;
+}
+
+.leftBlock{
+	float:left;
+	width:30%;
+	padding:5%;
+}
+
+.rightBlock{
+	float:right;
+	padding:5%;
+}	
+
+#headerMessage{
+
+}
+
+main{
+	display:block;
+	height:60%;
+	padding:5%;
+}
+main form #gameForm{
+	margin: 20px;
+	font-size: 20px;
+}
+
+input, select, button {
+	margin: 5px;
+}
+
+.messageBox {
+	margin: 10px;
+}
+
+h1 {
+	font-size: 20px;
+}
