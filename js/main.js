@@ -12,6 +12,7 @@ $(function(){
 			success:function(data){
 			}
 		});
+	
 		$(".messageBox1 ").html(" ");
 		$(".messageBox1").css({display: "none"});
 		
@@ -35,11 +36,17 @@ $(function(){
 				player_class:cahracter
 			},
 			success:function(data){
+			//console.log(data.tools)
+			console.log(data.players)
 				$(".messageBox1").css({display: "block"});
 				$('.messageBox1').append("<p>These are facts about you: <p><br>");
-				var spObj=data.players[0];
-				$.each( spObj, function( key, value ) {
-					$(".messageBox1").append("<p>",key + " : " +value+"</p><br>");
+				
+				var humanPlayer=data.players[0];
+				var bot1=data.players[1];
+				var bot2=data.players[2];
+				console.log(humanPlayer,bot1,bot2)
+				$.each( humanPlayer, function( key, value ) {
+					$(".messageBox1").append("<p>",key + " : " +value+"</p>");
 				});
 				
 				getChalleng();
