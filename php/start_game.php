@@ -19,22 +19,20 @@ include_once("../nodebite-swiss-army-oop.php");
 	unset($ds->tools);
 	unset($ds->current_challenge);
 	
+	
+	
 	if(!isset($_REQUEST["player_name"])) {
 		exit();
-	$playerChoice = array("name" => "sara", "class" => "Mitsa");
 } else {
 	$player = $_REQUEST["player_name"];
 	$class= $_REQUEST["player_class"];
-	
 	$playerChoice = array("name" =>$player , "class" =>$class );
-	
 }
 
 
 // Create all three players
  
 	$allPlayerClasses = array("Mitsa","Kian","Ali");
-	
 	$i = 0;
 	$bots = array();
 	foreach($allPlayerClasses as $class) {
@@ -45,14 +43,10 @@ include_once("../nodebite-swiss-army-oop.php");
 		}
 		$i++;
 	}
-	
 	foreach ($bots as $bot) {
 		$ds->players[] = $bot;
 	}
 	
-	
-
-
 	
 	//challenges
 	$challenges_data = array(
@@ -239,3 +233,8 @@ $echo_arr = array(
 );
 
 echo(json_encode($echo_arr));
+
+
+if(isset($_REQUEST["tool"])) {
+	
+	}

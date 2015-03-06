@@ -17,6 +17,15 @@ include_once("../nodebite-swiss-army-oop.php");
 	if(isset($_REQUEST["ch"])){
 	
 		$index=(rand(0,9));
+		$ds->current_challenge[0] = &$ds->challenges[$index];
+		echo(json_encode($ds->challenges[$index]));
+	
+	}
+	
+	if(isset($_REQUEST["ch_new"])){
+		$ds->players[0]->success -=5;
+		$index=(rand(0,9));
+		$ds->current_challenge[0] = &$ds->challenges[$index];
 		echo(json_encode($ds->challenges[$index]));
 	
 	}
