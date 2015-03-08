@@ -10,9 +10,7 @@ class Challenge {
 	}
 
 	public function playChallenge(&$players) {
-		//DEV
-		//$result = $players;
-		//return $result;
+
 			
 		$matches = array();
 		//get chances to win for each player
