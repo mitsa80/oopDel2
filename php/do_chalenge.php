@@ -25,6 +25,7 @@ if(!$alone){
 	
     $opponent = &$ds->players[2];
 	
+	
 	//teaming up has a cost..
     $human_player->success -= 5;
     $companion->success -= 5;
@@ -37,11 +38,16 @@ if(!$alone){
 
   //and do the challenge 
   $result = $human_player->acceptChallenge($ds->current_challenge[0], $players);
-
+//var_dump($result);
   //who first etc.
   $winner = $result[0];
+  //var_dump($winner);
+  //die();
   $last = $result[count($result)-1];
-
+	//var_dump($winner);
+	//var_dump($last);
+	//die();
+	
   //if the team won or not
   if (get_class($winner) == "Team") {
     //Team winners get 9 points
@@ -84,7 +90,7 @@ $echo_data = array(
   "result" => $result,
   "playing" => $ds->players,
   "winner"=>$winner,
-  
+  "last"=>$last
 );
 
 echo(json_encode($echo_data));
