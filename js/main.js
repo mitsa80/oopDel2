@@ -40,7 +40,7 @@ $(function(){
 				player_class:cahracter
 			},
 			success:function(data){
-			console.log(data);
+			//console.log(data);
 				$(".messageBox1").css({display: "block"});
 				$('.messageBox1').append("<h1>player Information: </h1>");
 				
@@ -114,6 +114,7 @@ function getChalleng(){
 	
 	$("body").on('click', ".doChallengeAlone", function() {
      $(".doChallengeTeam").hide();
+	 $(".doChallengeAlone").hide();
 		$.ajax({
 			url: "php/do_chalenge.php",
 			dataType: "json",
@@ -123,10 +124,11 @@ function getChalleng(){
 			success: getResultAlone
 		});
     });
-	
+		
 	
 	$("body").on('click', ".doChallengeTeam", function() {
 	$(".doChallengeAlone").hide();
+	$(".doChallengeTeam").hide();
 		$.ajax({
 			url: "php/do_chalenge.php",
 			dataType: "json",
@@ -139,56 +141,50 @@ function getChalleng(){
 	});
 	
 	function getResultAlone(data){
-		//console.log(data)
-		
 		$(".tools").html(" ");
 		var tools=data.result[0]['tools'];
-		for(var k=0 ; k <tools.length ;k++){
 			$(".tools").prepend(
 			"<p><b>"+data.playing[0]['name'] +"</b> gets this  ** "+
-			data.result[0]['tools'][k]['description']+
+			data.result[0]['tools'][0]['description']+
 			" ** tool.It helps her/him to have more cooking skills!</p><br>"
 			);
-		}
-		for(var y=0 ; y <3 ;y++){
+		console.log(data)
+		for(var y=0 ; y <data.result.length ;y++){
 			$(".tools").append( "<p>player"+ (y+1) +"  is "+ data.result[y]['name'] +" with "+data.result[y]['success']+"points</p>");
 			}
-			
-		$(".box4").html("")
-		for(var p=0 ; p <3 ;p++){
-			if(data.result[p]['success']>=100){
-				$(".box4").append("<p>The winner is: "+data.result[p]['name'] )	
-			}
-			if(data.result[p]['success']<=0){
-				$(".box4").append("<p>The looser is: "+data.result[p]['name'] )
-			}
-		}		
+		
+		$(".box4").append("<button class='next'>play next chaleng</button>")
 	}
 	
 	
+	
+	$("body").on('click', ".next", function() {
+		$(this).hide();
+		$(".box2").append("<button class = 'accept'>Accept challenge</button><button class='randomCh'>Random challenge</button>");
+	
+	});
+	
+	
+	
+	
+	
+	
 	function getResultTeam(data){
-	console.log(data)
+		console.log(data)
 		$(".tools").html(" ");
 		var tools=data.result[0]['tools'];
-		for(var k=0 ; k <tools.length ;k++){
 			$(".tools").prepend(
-			"<p>Team  get this  **"+
-			data.result[0]['tools'][k]['description']+"** tool!"
+			"<p><b>"+data.playing[0]['name'] +"</b> gets this  ** "+
+			data.result[0]['tools'][0]['description']+
+			" ** tool.It helps her/him to have more cooking skills!</p><br>"
 			);
-		}
-		$(".box4").html("");
-		$(".box4").append("<p>Team members : "+data.result[0]['members'][0]['name'] + " and "+data.result[0]['members'][1]['name']+"</p>");
+			for(var y=0 ; y <data.result.length ;y++){
+			$(".tools").append( "<p>player"+ (y+1) +"  is "+ data.result[y]['name'] +" with "+data.result[y]['success']+"points</p>");
+			}
 		
-		for(var h=0 ; h<2 ;h++){
-		console.log(data.result[h]['success'])
-			if(data.result[h]['success']>=100){
-			
-				$(".box4").append("<p>The winner is: "+data.result[h]['name'] )	
-			}
-			if(data.result[h]['success']<=0){
-				$(".box4").append("<p>The looser is: "+data.result[h]['name'] )
-			}
-		}	
+			$(".box4").append("<button class='next'>play next chaleng</button>")
+		
+		
 	}
 	
 
